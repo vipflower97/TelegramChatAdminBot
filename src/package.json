@@ -1,0 +1,37 @@
+{
+    "name": "chat-admin",
+    "version": "0.0.1",
+    "main": "main.js",
+    "description": "Telegram chat admin bot",
+    "repository": "https://github.com/RandallFlagg/TelegramChatAdminBot",
+    "author": "Auth",
+    "private": true,
+    "scripts": {
+        "start": "cross-env NODE_ENV=production node main.js",
+        "startd": "yarn run startd_linux",
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "now": "yarn run now_dev_deploy",
+        "now_dev_deploy": "now_deploy.cmd",
+        "now_public_deploy": "now deploy ../NOW_DEPLOY --npm --public && now alias",
+        "now-start": "yarn run start_linux",
+        "start_linux": "cross-env PORT=$npm_package_config_port TOKEN=$npm_package_config_token SECRET_PATH=$npm_package_config_secretPath yarn run start",
+        "startd_linux": "cross-env PORT=$npm_package_config_port TOKEN=$npm_package_config_token SECRET_PATH=$npm_package_config_secretPath NODE_ENV=development nodemon --inspect main.js",
+        "now-build": "node --version"
+    },
+    "not used scripts":{
+        "start_win_old": "cross-env PORT=%npm_package_config_port% TOKEN=%npm_package_config_token% SECRET_PATH=%npm_package_config_secretPath% yarn run start",
+        "startd_win_old": "cross-env PORT=%npm_package_config_port% TOKEN=%npm_package_config_token% SECRET_PATH=%npm_package_config_secretPath% NODE_ENV=development nodemon --inspect main.js",
+    },
+    "dependencies": {
+        "cross-env": "*",
+        "telegraf": "^3.21.2"
+    },
+    "now": {
+        "alias": "now.sh ALIAS DEPLOY"
+    },
+    "config":{
+        "port": -1,
+        "token":"Your token here",
+        "SecretPath":"Your secret path"
+    }
+}
